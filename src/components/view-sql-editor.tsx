@@ -2,7 +2,8 @@ import React, { useCallback, useEffect, useState } from "react";
 import { Modal, Button, useDisclosure, ModalBody, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalFooter, Box } from "@chakra-ui/react";
 import CodeMirror from "@uiw/react-codemirror";
 import { sql } from "@codemirror/lang-sql";
-import { FaRegCopy } from "react-icons/fa";
+import { FaRegCopy, FaSave } from "react-icons/fa";
+import { IoMdShare } from "react-icons/io";
 
 const ViewSQLEditor: React.FC = () => {
 
@@ -21,16 +22,16 @@ const ViewSQLEditor: React.FC = () => {
     return (
         <>
             <Button variant={"solid"} colorScheme="cyan" onClick={onOpen}>
-                Ver resultado
+                Traducir consulta
             </Button>
             <Modal
-                size={"lg"}
+                size={{ base: "md", md: "lg" }}
                 isOpen={isOpen}
                 onClose={onClose}
             >
                 <ModalOverlay />
                 <ModalContent>
-                    <ModalHeader>Resultado de la Query</ModalHeader>
+                    <ModalHeader>Resultado SQL</ModalHeader>
                     <ModalCloseButton />
                     <ModalBody>
                         <ModalBody>
@@ -47,11 +48,14 @@ const ViewSQLEditor: React.FC = () => {
                         </ModalBody>
                     </ModalBody>
                     <ModalFooter>
+                        <Button mr={3}>
+                            <FaRegCopy />
+                        </Button>
                         <Button colorScheme='blue' mr={3} onClick={onClose}>
-                            Descargar como .sql
+                            <FaSave />
                         </Button>
                         <Button>
-                            <FaRegCopy />
+                            <IoMdShare />
                         </Button>
                     </ModalFooter>
                 </ModalContent>
