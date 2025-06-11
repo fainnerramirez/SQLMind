@@ -1,6 +1,16 @@
 const Logo = () => {
     return (
-        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-purple-600 to-blue-500 text-white shadow-lg">
+        <div style={{
+            display: 'flex',
+            height: '2.5rem', // 40px
+            width: '2.5rem', // 40px
+            alignItems: 'center',
+            justifyContent: 'center',
+            borderRadius: '0.5rem', // 8px
+            background: 'linear-gradient(to bottom right, #9333ea, #3b82f6)', // purple-600 to blue-500
+            color: 'white',
+            boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)'
+        }}>
             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"

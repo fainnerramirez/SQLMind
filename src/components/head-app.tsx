@@ -1,19 +1,19 @@
-import { Box, Heading, Text } from "@chakra-ui/react"
+import { Flex, Heading, HStack, Text } from "@chakra-ui/react"
 import LogoSQL from "../assets/logo";
 
 const HeadApp: React.FC = () => {
     return (
-        <Box>
-            <Box>
+        <Flex justifyContent={"center"} alignItems={"center"} flexDirection={"column"}>
+            <HStack>
                 <LogoSQL />
                 <Heading>
                     SQLMind
                 </Heading>
-            </Box>
+            </HStack>
             <Text>
                 Traduce lenguaje natural a SQL con IA
             </Text>
-        </Box>
+        </Flex>
     )
 }
 
