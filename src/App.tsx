@@ -12,12 +12,12 @@ const App = () => {
         direction={{ base: "column", lg: "row" }}
         justifyContent={"center"}
         alignItems={"center"}
-        height={{base: "100%", lg: "85vh"}}
+        height={{ base: "100%", lg: "85vh" }}
         mt={3}
         mb={1}
-        spacing={{base: 5, md: 10}}
-        >
-        <Card width={{ base: "95%", lg: "40%" }}>
+        spacing={{ base: 5, md: 10 }}
+      >
+        <Card width={{ base: "95%", lg: "40%" }} height={"100%"}>
           <CardHeader>
             <HeadApp />
           </CardHeader>
@@ -28,20 +28,20 @@ const App = () => {
             </VStack>
           </CardBody>
         </Card>
-        <Card width={{ base: "95%", lg: "40%" }}>
+        <Card width={{ base: "95%", lg: "40%" }} height={"100%"}>
           <CardHeader>
             <Text as="h3" size={"lg"} display={"flex"} alignItems={"center"} gap={1}>
               <FaHistory />
-              Historial</Text>
+              Historial de consultas</Text>
           </CardHeader>
           <CardBody>
             <UserHistoryQuerys />
           </CardBody>
         </Card>
       </Stack>
-      <Divider height={1} bg={"gray.300"}/>
+      <Divider height={1} bg={"gray.300"} />
       <Box width={"100%"} p={3}>
-        <Text width={"100%"} textAlign={{base: "center", lg: "left"}}>Con ❤️ Por Fainner Ramirez</Text>
+        <Text width={"100%"} textAlign={{ base: "center", lg: "left" }}>Con 😎 Por Fainner Ramirez</Text>
       </Box>
     </>
   )
