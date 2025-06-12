@@ -23,9 +23,10 @@ const router = createBrowserRouter(
 createRoot(document.getElementById('root')!).render(
   <ChakraProvider>
     <StrictMode>
-      <AuthInitializer>
+      {/* <AuthInitializer>
         <RouterProvider router={router} />
-      </AuthInitializer>
+      </AuthInitializer> */}
+      <App />
     </StrictMode>
   </ChakraProvider>
 )
