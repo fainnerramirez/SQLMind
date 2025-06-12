@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Modal, Button, useDisclosure, ModalBody, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalFooter, Box, useToast } from "@chakra-ui/react";
+import { Modal, Button, useDisclosure, ModalBody, ModalContent, ModalHeader, ModalCloseButton, ModalFooter, Box, useToast } from "@chakra-ui/react";
 import CodeMirror from "@uiw/react-codemirror";
 import { sql } from "@codemirror/lang-sql";
 import { FaRegCopy, FaSave } from "react-icons/fa";
