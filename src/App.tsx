@@ -4,10 +4,12 @@ import HeadApp from './components/head-app'
 import ViewSQLEditor from './components/view-sql-editor'
 import UserHistoryQuerys from './components/user-history-querys'
 import { FaHistory } from 'react-icons/fa'
+import HeaderPage from './components/header-page'
 
 const App = () => {
   return (
     <>
+      <HeaderPage />
       <Stack
         direction={{ base: "column", lg: "row" }}
         justifyContent={"center"}

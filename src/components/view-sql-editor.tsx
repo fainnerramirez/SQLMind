@@ -73,6 +73,7 @@ const ViewSQLEditor: React.FC = () => {
                 onClick={handleResponseOpenAI}
                 isLoading={isLoading}
                 loadingText='Traduciendo...'
+                isDisabled={query === ""}
             >
                 Traducir consulta
             </Button>
