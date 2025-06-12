@@ -4,15 +4,17 @@ import LogoSQL from "../assets/logo";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "../firebase/config";
 import { useSQLMindStore } from "../../stores/sql-mind-store";
+import { useNavigate } from "react-router-dom";
 
 const HomePage: React.FC = () => {
+    const navigate = useNavigate();
     const { setUser } = useSQLMindStore();
 
     const handleGoogle = () => {
         const provider = new GoogleAuthProvider();
         signInWithPopup(auth, provider).then((result) => {
             setUser(result.user);
-            window.location.href = "/app";
+            navigate("/app");
         })
             .catch((error) => {
                 console.error("Error al autenticar con Google | Error: ", error);
