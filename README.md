@@ -1,54 +1,50 @@
-# React + TypeScript + Vite
+# 🧠 SQLMind
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+SQLMind es una aplicación web que convierte lenguaje natural en consultas **SQL**, ayudando a usuarios a generar código fácilmente sin necesidad de conocer sintaxis complejas.
 
-Currently, two official plugins are available:
+## 🚀 Características principales
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 🗣️ **Conversión de lenguaje natural a SQL**  
+  Traduce automáticamente frases como “dame todos los usuarios registrados en abril” a consultas SQL válidas.
 
-## Expanding the ESLint configuration
+- 💾 **Exportación a archivo `.sql`**  
+  Descarga tus consultas generadas para usarlas en tu base de datos.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- 📚 **Historial del usuario**  
+  Guarda cada consulta generada para que puedas revisarla o reutilizarla después.
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- 🧩 **Editor con CodeMirror**  
+  Visualiza y edita el código SQL con resaltado de sintaxis gracias al potente editor [CodeMirror](https://codemirror.net/).
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- 🔐 **Autenticación con Google**  
+  Accede de forma segura y guarda tu historial personalizado.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+
+## 🧪 Ejemplos de uso
+
+Aquí tienes algunos ejemplos de consultas que puedes hacer con SQLMind:
+
+| Lenguaje Natural | Output SQL |
+|------------------|------------|
+| **"Dame todos los usuarios registrados en abril"** | `SELECT * FROM users WHERE MONTH(created_at) = 4;` |
+| **"Mostrar el total de ventas por producto"** | `SELECT product_name, SUM(sales) AS total_sales FROM orders GROUP BY product_name;` |
+| **"¿Cuántos usuarios se registraron el último mes?"** | `SELECT COUNT(*) FROM users WHERE created_at >= DATE_SUB(CURDATE(), INTERVAL 1 MONTH);` |
+| **"Obtener el nombre y correo de los usuarios activos"** | `SELECT name, email FROM users WHERE status = 'active';` |
+| **"Productos que no se han vendido"** | `SELECT * FROM products WHERE id NOT IN (SELECT product_id FROM orders);` |
+
+Puedes ajustar estas queries en el editor de CodeMirror si deseas personalizarlas antes de exportar.
+
+---
+
+## 🛠️ Tecnologías usadas
+
+- ⚛️ **React + Vite** — Interfaz moderna y rápida
+- 🔥 **Firebase** — Autenticación
+- 🧠 **OpenAI / LLMs** — Generación del código SQL desde lenguaje natural
+- 🧪 **Zustand** — Gestión de estado simple y eficaz
+- 🧩 **CodeMirror** — Editor de código con autocompletado y syntax highlighting
+- 🎨 **Chakra UI** — Componentes accesibles y estilizados
+
+---
