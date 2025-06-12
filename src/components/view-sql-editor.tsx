@@ -6,28 +6,45 @@ import { FaRegCopy, FaSave } from "react-icons/fa";
 import { IoMdShare } from "react-icons/io";
 import { useSQLMindStore } from "../../stores/sql-mind-store";
 import { getResponseOpenAI } from "../../ai/get-response-ai";
+import conffeti from "canvas-confetti";
 
 const ViewSQLEditor: React.FC = () => {
 
     const toast = useToast();
-    const { query, setHistoryQuerys, historyQuerys } = useSQLMindStore();
+    const { query, setHistoryQuerys, historyQuerys, countQueryUser, setCountQueryUser } = useSQLMindStore();
     const { isOpen, onClose, onOpen } = useDisclosure();
     const [code, setCode] = useState<string>("");
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
     const handleResponseOpenAI = async () => {
-        setIsLoading(true);
-        const response = await getResponseOpenAI(query);
-        setCode(response.output_text);
-        setIsLoading(false);
-        onOpen();
-        toast({
-            title: '¡Tu consulta ha sido traducida!',
-            status: 'success',
-            duration: 3000,
-            isClosable: true,
-        });
-        setHistoryQuerys([...historyQuerys, { queryUser: query, queryIA: response.output_text }]);
+        if (countQueryUser !== 0) {
+            setIsLoading(true);
+            const response = await getResponseOpenAI(query);
+            setCode(response.output_text);
+            setIsLoading(false);
+            onOpen();
+            conffeti({
+                particleCount: 100,
+                startVelocity: 30,
+                spread: 360,
+                origin: {
+                    x: 0.5,
+                    y: 0.5
+                }
+            });
+            setHistoryQuerys([...historyQuerys, { queryUser: query, queryIA: response.output_text }]);
+            setCountQueryUser(countQueryUser - 1);
+        }
+        else {
+            toast({
+                title: `Has alcanzado tu límite de 3 consultas. !Gracias por usar SQLMind!` ,
+                status: 'info',
+                duration: 7000,
+                isClosable: true,
+                variant: "top-accent",
+            });
+            return;
+        }
     }
 
     const handleCopy = async () => {
@@ -82,7 +99,7 @@ const ViewSQLEditor: React.FC = () => {
                 isOpen={isOpen}
                 onClose={onClose}
             >
-                <ModalOverlay />
+                {/* <ModalOverlay /> */}
                 <ModalContent>
                     <ModalHeader>Resultado SQL</ModalHeader>
                     <ModalCloseButton />
