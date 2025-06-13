@@ -3,7 +3,6 @@ import { Navigate, Outlet } from "react-router-dom";
 
 const ProtectedRoutesApp = () => {
     const { user } = useSQLMindStore();
-    console.log("User: ", user);
     if (!user) {
         return <Navigate to={"/login"} replace/>
     }

@@ -3,7 +3,7 @@ import { type ChangeEvent } from "react";
 import { useSQLMindStore } from "../../stores/sql-mind-store";
 
 export const UserConsultNatural: React.FC = () => {
-
+    
     const { setQuery } = useSQLMindStore();
 
     const handleChange = (event: ChangeEvent<HTMLTextAreaElement>) => {

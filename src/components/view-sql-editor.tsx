@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { Modal, Button, useDisclosure, ModalBody, ModalContent, ModalHeader, ModalCloseButton, ModalFooter, Box, useToast } from "@chakra-ui/react";
 import CodeMirror from "@uiw/react-codemirror";
 import { sql } from "@codemirror/lang-sql";
@@ -37,7 +37,7 @@ const ViewSQLEditor: React.FC = () => {
         }
         else {
             toast({
-                title: `Has alcanzado tu límite de 3 consultas. !Gracias por usar SQLMind!` ,
+                title: `Has alcanzado tu límite de 3 consultas. !Gracias por usar SQLMind!`,
                 status: 'info',
                 duration: 7000,
                 isClosable: true,
@@ -47,9 +47,8 @@ const ViewSQLEditor: React.FC = () => {
         }
     }
 
-    const handleCopy = async () => {
+    const handleCopy = useCallback(async () => {
         try {
-
             await navigator.clipboard.writeText(code);
             toast({
                 title: '¡Consulta copiada!',
@@ -60,9 +59,9 @@ const ViewSQLEditor: React.FC = () => {
         } catch (error) {
             console.error("Error al copiar la consulta");
         }
-    }
+    }, [code]);
 
-    const handleDownloadFile = () => {
+    const handleDownloadFile = useCallback(() => {
 
         if (code === "") return;
 
@@ -80,7 +79,8 @@ const ViewSQLEditor: React.FC = () => {
         a.click();
         URL.revokeObjectURL(url);
         document.body.removeChild(a);
-    }
+
+    }, [code]);
 
     return (
         <>

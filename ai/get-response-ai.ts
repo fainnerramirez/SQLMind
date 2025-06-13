@@ -19,6 +19,5 @@ export const getResponseOpenAI = async (fetch_user: string): Promise<Response> =
         `,
         input: `Traduce esta consulta ${fetch_user} de lenguaje natural a una instrucción SQL`
     });
-    console.log("Response: ", response.output_text);
     return response;
 }
