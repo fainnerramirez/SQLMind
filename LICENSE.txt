@@ -1,0 +1,7 @@
+MIT License
+
+Copyright (c) 2025 Fainner Ramirez
+
+Se otorga permiso, de forma gratuita, a cualquier persona que obtenga una copia de este software y los archivos asociados, para usarlo, copiarlo, modificarlo, fusionarlo, publicarlo, distribuirlo, sublicenciarlo y/o vender copias del software, siempre y cuando cumpla con las siguientes condiciones:
+
+El aviso de copyright y este aviso de permiso deben incluirse en todas las copias o partes sustanciales del software.

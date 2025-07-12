@@ -48,3 +48,7 @@ Puedes ajustar estas queries en el editor de CodeMirror si deseas personalizarla
 - 🎨 **Chakra UI** — Componentes accesibles y estilizados
 
 ---
+
+## Licencia
+
+Este proyecto está licenciado bajo la Licencia MIT - consulta el archivo [LICENSE](./LICENSE) para más detalles.
