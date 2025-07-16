@@ -1,25 +1,36 @@
 import { Box, Button, Heading, Stack, VStack } from "@chakra-ui/react";
-import { FcGoogle } from "react-icons/fc";
-import LogoSQL from "../assets/logo";
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { auth } from "../firebase/config";
-import { useSQLMindStore } from "../../stores/sql-mind-store";
+import { FirebaseError } from "firebase/app";
+import { signInAnonymously } from "firebase/auth";
+import { useState } from "react";
+import { IoIosArrowForward } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
+import { useSQLMindStore } from "../../stores/sql-mind-store";
+import LogoSQL from "../assets/logo";
+import { auth } from "../firebase/config";
 
 const HomePage: React.FC = () => {
+    const [isLoading, setIsLoading] = useState<boolean>(false);
     const navigate = useNavigate();
     const { setUser } = useSQLMindStore();
 
-    const handleGoogle = () => {
-        const provider = new GoogleAuthProvider();
-        signInWithPopup(auth, provider).then((result) => {
-            setUser(result.user);
+    const handleAnonimoUser = async () => {
+        try {
+            setIsLoading(true);
+            const { user } = await signInAnonymously(auth);
+            console.log("Response user anonimous: ", user);
+            setIsLoading(false);
+            setUser(user);
             navigate("/app");
-        })
-            .catch((error) => {
-                console.error("Error al autenticar con Google | Error: ", error);
-                throw error;
-            })
+        }
+        catch (error) {
+            setIsLoading(false);
+            if (error instanceof FirebaseError) {
+                console.log("SQLMIND => Error al autenticar el usuario anónimo");
+                console.log(`SQLMIND => Error Code | ${error.code}`);
+                console.log(`SQLMIND => Error Message | ${error.message}`);
+            }
+            throw error;
+        }
     }
 
     return (
@@ -41,10 +52,9 @@ const HomePage: React.FC = () => {
                     </Heading>
                 </VStack>
                 <Box>
-                    <Button rightIcon={<FcGoogle />} onClick={handleGoogle}>
-                        Ingresa con Google
+                    <Button isLoading={isLoading} colorScheme="teal" rightIcon={<IoIosArrowForward />} onClick={handleAnonimoUser}>
+                        Ingresar
                     </Button>
-
                 </Box>
             </Stack>
         </>

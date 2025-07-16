@@ -1,10 +1,10 @@
 import { Box, Card, CardBody, CardHeader, Divider, Stack, Text, VStack } from '@chakra-ui/react'
-import { UserConsultNatural } from './components/user-consult-natural'
-import HeadApp from './components/head-app'
-import ViewSQLEditor from './components/view-sql-editor'
-import UserHistoryQuerys from './components/user-history-querys'
 import { FaHistory } from 'react-icons/fa'
+import HeadApp from './components/head-app'
 import HeaderPage from './components/header-page'
+import { UserConsultNatural } from './components/user-consult-natural'
+import UserHistoryQuerys from './components/user-history-querys'
+import ViewSQLEditor from './components/view-sql-editor'
 
 const App = () => {
   return (
