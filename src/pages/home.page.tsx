@@ -11,7 +11,7 @@ import { auth } from "../firebase/config";
 const HomePage: React.FC = () => {
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const navigate = useNavigate();
-    const { setUser, user } = useSQLMindStore();
+    const { setUser } = useSQLMindStore();
 
     const handleAnonimoUser = async () => {
         try {
