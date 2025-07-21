@@ -54,7 +54,7 @@ const HomePage: React.FC = () => {
                     <Heading as="h3" size={"lg"}>
                         Tu Agente AI para SQL
                     </Heading>
-                    <Text width={{base: "90%", md: "100%"}}>
+                    <Text width={{ base: "90%", md: "100%" }}>
                         Convierte fácilmente lenguaje natural en consultas SQL precisas con un solo clic
                     </Text>
                 </VStack>
@@ -64,13 +64,18 @@ const HomePage: React.FC = () => {
                     borderWidth={4}
                     borderStyle={"solid"}
                     borderColor={"purple.700"}
-                    px={{base: 4, md: 8}}
-                    py={{base: 1, md: 3}}
+                    px={{ base: 4, md: 8 }}
+                    py={{ base: 1, md: 3 }}
                     borderRadius={"lg"}
                     onClick={handleAnonimoUser}
                     display={"flex"}
                     alignItems={"center"}
                     gap={2}
+                    _hover={{
+                        bg: "rgba(114, 92, 173, 0.7)",
+                        transform: isLoading ? "none" : "translateY(-3px)",
+                        transition: "all .7s"
+                    }}
                 >
                     <Box>
                         {
