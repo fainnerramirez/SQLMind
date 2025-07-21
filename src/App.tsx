@@ -1,4 +1,4 @@
-import { Box, Card, CardBody, CardHeader, Divider, Stack, Text, VStack } from '@chakra-ui/react'
+import { Box, Button, Card, CardBody, CardHeader, Divider, Stack, Text, VStack } from '@chakra-ui/react'
 import HeadApp from './components/head-app'
 import { UserConsultNatural } from './components/user-consult-natural'
 import UserHistoryQuerys from './components/user-history-querys'
@@ -34,8 +34,9 @@ const App = () => {
         </Card>
       </Stack>
       <Divider height={1} bg={"gray.300"} />
-      <Box width={"100%"} p={3}>
-        <Text width={"100%"} textAlign={{ base: "center", lg: "left" }}>Con 😎 Por Fainner Ramirez</Text>
+      <Box  p={3} bg={"rgba(114, 92, 173, 1)"} display={"flex"} flexDir={"column"} alignItems={"center"}>
+        <Text color={"#FFFFFF"} width={"100%"} textAlign={"center"}>Con 😎 & 🍵 Por</Text>
+        <Button _hover={{ bg: "transparent" }} onClick={() => window.open("https://github.com/fainnerramirez")} bg={"transparent"}>Fainner Ramirez</Button>
       </Box>
     </>
   )

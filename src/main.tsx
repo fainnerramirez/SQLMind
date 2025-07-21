@@ -15,7 +15,7 @@ const router = createBrowserRouter(
       <Route path='/' element={<RedirectAuth />}></Route>
       <Route path='/login' element={<HomePage />}></Route>
       <Route path='/' element={<ProtectedRoutesApp />}>
-        <Route path='app' element={<Layout><App /></Layout>}></Route>
+        <Route path='app' element={<App />}></Route>
       </Route>
     </>
   )
@@ -25,7 +25,9 @@ createRoot(document.getElementById('root')!).render(
   <ChakraProvider>
     <StrictMode>
       <AuthInitializer>
-        <RouterProvider router={router} />
+        <Layout>
+          <RouterProvider router={router} />
+        </Layout>
       </AuthInitializer>
     </StrictMode>
   </ChakraProvider>

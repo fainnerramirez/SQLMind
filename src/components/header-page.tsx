@@ -6,7 +6,7 @@ import { auth } from "../firebase/config";
 
 const HeaderPage = () => {
 
-    const { setUser } = useSQLMindStore();
+    const { setUser, user } = useSQLMindStore();
     const handleLogout = async () => {
         try {
             await signOut(auth);
@@ -19,7 +19,7 @@ const HeaderPage = () => {
     }
 
     return (
-        <Box as="nav" display={"flex"} justifyContent={"end"}>
+        <Box as="nav" display={user !== null ? "flex" : "none"} justifyContent={"end"} >
             <Box p={{ base: 3, md: 5 }} mb={{ base: 5, md: 10, lg: 0 }}>
                 <Button
                     rightIcon={<IoMdLogOut />}
