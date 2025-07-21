@@ -1,12 +1,12 @@
-import React, { useCallback, useState } from "react";
-import { Modal, Button, useDisclosure, ModalBody, ModalContent, ModalHeader, ModalCloseButton, ModalFooter, Box, useToast } from "@chakra-ui/react";
-import CodeMirror from "@uiw/react-codemirror";
+import { Box, Button, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, useDisclosure, useToast } from "@chakra-ui/react";
 import { sql } from "@codemirror/lang-sql";
+import CodeMirror from "@uiw/react-codemirror";
+import conffeti from "canvas-confetti";
+import React, { useCallback, useState } from "react";
 import { FaRegCopy, FaSave } from "react-icons/fa";
 import { IoMdShare } from "react-icons/io";
+import { runAgent } from "../../agent/get-response-ai";
 import { useSQLMindStore } from "../../stores/sql-mind-store";
-import { getResponseOpenAI } from "../../ai/get-response-ai";
-import conffeti from "canvas-confetti";
 
 const ViewSQLEditor: React.FC = () => {
 
@@ -19,8 +19,9 @@ const ViewSQLEditor: React.FC = () => {
     const handleResponseOpenAI = async () => {
         if (countQueryUser !== 0) {
             setIsLoading(true);
-            const response = await getResponseOpenAI(query);
-            setCode(response.output_text);
+            const { finalOutput, history } = await runAgent(query);
+            console.log({ finalOutput, history });
+            setCode(finalOutput!);
             setIsLoading(false);
             onOpen();
             conffeti({
@@ -32,7 +33,7 @@ const ViewSQLEditor: React.FC = () => {
                     y: 0.5
                 }
             });
-            setHistoryQuerys([...historyQuerys, { queryUser: query, queryIA: response.output_text }]);
+            setHistoryQuerys([...historyQuerys, { queryUser: query, queryIA: finalOutput! }]);
             setCountQueryUser(countQueryUser - 1);
         }
         else {

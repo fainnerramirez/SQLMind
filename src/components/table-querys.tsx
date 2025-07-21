@@ -1,7 +1,7 @@
-import { Table, TableContainer, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react"
-import type { historyProps } from "../../stores/sql-mind-store";
-import CodeMirror from "@uiw/react-codemirror";
+import { Table, TableContainer, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
 import { sql } from "@codemirror/lang-sql";
+import CodeMirror from "@uiw/react-codemirror";
+import type { historyProps } from "../../stores/sql-mind-store";
 
 const TableQuery = ({ data }: { data: historyProps[] }) => {
     return (
@@ -16,7 +16,7 @@ const TableQuery = ({ data }: { data: historyProps[] }) => {
                     {
                         data.map((item) => {
                             return (
-                                <Tr>
+                                <Tr key={new Date().getTime()}>
                                     <Td>
                                         <CodeMirror
                                             value={item.queryIA}

@@ -1,8 +1,8 @@
-import { Box, Button, Heading, Stack, VStack } from "@chakra-ui/react";
+import { Box, Heading, Spinner, Stack, Text, VStack } from "@chakra-ui/react";
 import { FirebaseError } from "firebase/app";
 import { signInAnonymously } from "firebase/auth";
 import { useState } from "react";
-import { IoIosArrowForward } from "react-icons/io";
+import { TbHandClick } from "react-icons/tb";
 import { useNavigate } from "react-router-dom";
 import { useSQLMindStore } from "../../stores/sql-mind-store";
 import LogoSQL from "../assets/logo";
@@ -11,7 +11,7 @@ import { auth } from "../firebase/config";
 const HomePage: React.FC = () => {
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const navigate = useNavigate();
-    const { setUser } = useSQLMindStore();
+    const { setUser, user } = useSQLMindStore();
 
     const handleAnonimoUser = async () => {
         try {
@@ -47,14 +47,42 @@ const HomePage: React.FC = () => {
                     justifyContent={"flex-end"}
                 >
                     <LogoSQL />
-                    <Heading>
+                    <Heading as="h1" size={"2xl"}>
                         SQLMind
                     </Heading>
+                    <Heading as="h3" size={"lg"}>
+                        Tu Agente AI para SQL
+                    </Heading>
+                    <Text>
+                        Convierte fácilmente lenguaje natural en consultas SQL precisas con un solo clic
+                    </Text>
                 </VStack>
-                <Box>
-                    <Button isLoading={isLoading} colorScheme="teal" rightIcon={<IoIosArrowForward />} onClick={handleAnonimoUser}>
-                        Ingresar
-                    </Button>
+                <Box
+                    as="button"
+                    bg={"transparent"}
+                    borderWidth={4}
+                    borderStyle={"solid"}
+                    borderColor={"purple.700"}
+                    px={8}
+                    py={3}
+                    borderRadius={"lg"}
+                    onClick={handleAnonimoUser}
+                    display={"flex"}
+                    alignItems={"center"}
+                    gap={2}
+                >
+                    <Box>
+                        {
+                            isLoading ?
+                                <Spinner color="white" size={"md"} />
+                                :
+                                <TbHandClick color="#1A202C" size={35} />
+                        }
+                    </Box>
+                    <Box>
+                        <Text textAlign={"left"}>Comenzar</Text>
+                        <Text color={"gray.500"}>Ir a la aplicación</Text>
+                    </Box>
                 </Box>
             </Stack>
         </>
