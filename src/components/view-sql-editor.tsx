@@ -11,12 +11,25 @@ import { useSQLMindStore } from "../../stores/sql-mind-store";
 const ViewSQLEditor: React.FC = () => {
 
     const toast = useToast();
-    const { query, setHistoryQuerys, historyQuerys, countQueryUser, setCountQueryUser } = useSQLMindStore();
+    const { query, setQuery, setHistoryQuerys, historyQuerys, countQueryUser, setCountQueryUser } = useSQLMindStore();
     const { isOpen, onClose, onOpen } = useDisclosure();
     const [code, setCode] = useState<string>("");
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
     const handleResponseOpenAI = async () => {
+
+        console.log("Query user: ", query);
+        if (!query || query === "") {
+            toast({
+                title: `Escribe una consulta válida`,
+                status: 'warning',
+                duration: 3000,
+                isClosable: true,
+                variant: "top-accent",
+            });
+            return;
+        }
+
         if (countQueryUser !== 0) {
             setIsLoading(true);
             const { finalOutput, history } = await runAgent(query);
@@ -35,6 +48,7 @@ const ViewSQLEditor: React.FC = () => {
             });
             setHistoryQuerys([...historyQuerys, { queryUser: query, queryIA: finalOutput! }]);
             setCountQueryUser(countQueryUser - 1);
+            setQuery("");
         }
         else {
             toast({
@@ -86,12 +100,20 @@ const ViewSQLEditor: React.FC = () => {
     return (
         <>
             <Button
-                variant={"solid"}
-                colorScheme="cyan"
                 onClick={handleResponseOpenAI}
                 isLoading={isLoading}
                 loadingText='Traduciendo...'
                 isDisabled={query === ""}
+                bg={"transparent"}
+                borderRadius={"lg"}
+                borderWidth={2}
+                borderColor={"#1A202C"}
+                color={"#1A202C"}
+                _hover={{
+                    bg: "rgba(114, 92, 173, 0.7)",
+                    transform: "translateY(-2px)",
+                    transition: "all .5s"
+                }}
             >
                 Traducir consulta
             </Button>

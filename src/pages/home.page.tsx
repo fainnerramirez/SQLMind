@@ -82,7 +82,7 @@ const HomePage: React.FC = () => {
                             isLoading ?
                                 <Spinner color="white" size={"md"} />
                                 :
-                                <TbHandClick color="#1A202C" size={35} />
+                                <TbHandClick color="rgba(26, 32, 44, 1)" size={35} />
                         }
                     </Box>
                     <Box>

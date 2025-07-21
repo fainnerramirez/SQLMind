@@ -1,7 +1,5 @@
 import { Box, Card, CardBody, CardHeader, Divider, Stack, Text, VStack } from '@chakra-ui/react'
-import { FaHistory } from 'react-icons/fa'
 import HeadApp from './components/head-app'
-import HeaderPage from './components/header-page'
 import { UserConsultNatural } from './components/user-consult-natural'
 import UserHistoryQuerys from './components/user-history-querys'
 import ViewSQLEditor from './components/view-sql-editor'
@@ -9,7 +7,6 @@ import ViewSQLEditor from './components/view-sql-editor'
 const App = () => {
   return (
     <>
-      <HeaderPage />
       <Stack
         direction={{ base: "column", lg: "row" }}
         justifyContent={"center"}
@@ -19,7 +16,7 @@ const App = () => {
         mb={1}
         spacing={{ base: 5, md: 10 }}
       >
-        <Card width={{ base: "95%", lg: "40%" }} height={"100%"}>
+        <Card width={{ base: "95%", lg: "40%" }} height={"100%"} bg={"transparent"}>
           <CardHeader>
             <HeadApp />
           </CardHeader>
@@ -30,12 +27,7 @@ const App = () => {
             </VStack>
           </CardBody>
         </Card>
-        <Card width={{ base: "95%", lg: "40%" }} height={"100%"}>
-          <CardHeader>
-            <Text as="h3" size={"lg"} display={"flex"} alignItems={"center"} gap={1}>
-              <FaHistory />
-              Historial de consultas</Text>
-          </CardHeader>
+        <Card width={{ base: "95%", lg: "40%" }} height={"100%"} bg={"transparent"}>
           <CardBody>
             <UserHistoryQuerys />
           </CardBody>
