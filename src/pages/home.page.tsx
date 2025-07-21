@@ -45,6 +45,7 @@ const HomePage: React.FC = () => {
                 <VStack
                     spacing={2}
                     justifyContent={"flex-end"}
+                    textAlign={"center"}
                 >
                     <LogoSQL />
                     <Heading as="h1" size={"2xl"}>
@@ -53,7 +54,7 @@ const HomePage: React.FC = () => {
                     <Heading as="h3" size={"lg"}>
                         Tu Agente AI para SQL
                     </Heading>
-                    <Text>
+                    <Text width={{base: "90%", md: "100%"}}>
                         Convierte fácilmente lenguaje natural en consultas SQL precisas con un solo clic
                     </Text>
                 </VStack>
@@ -63,8 +64,8 @@ const HomePage: React.FC = () => {
                     borderWidth={4}
                     borderStyle={"solid"}
                     borderColor={"purple.700"}
-                    px={8}
-                    py={3}
+                    px={{base: 4, md: 8}}
+                    py={{base: 1, md: 3}}
                     borderRadius={"lg"}
                     onClick={handleAnonimoUser}
                     display={"flex"}
